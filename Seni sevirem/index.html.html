@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <title>Səni sonsuz sevgi ilə sevirəm 💙</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: linear-gradient(90deg, #2575fc, #28a745, #ff69b4, #ff4500);
+      background-size: 400% 400%;
+      animation: gradientBG 16s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 200% 50%; }
+      75% { background-position: 300% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      color: darkblue;
+    }
+
+    #secret {
+      font-size: 20px;
+      color: darkblue;
+      opacity: 0;
+      transition: opacity 1s ease;
+      height: 30px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(37, 117, 252, 0.3);
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      box-shadow: 0 15px 20px rgba(106, 17, 203, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 4s linear forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-500px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Aysu 💙</h1>
+  <h1 style="font-size:80px;">&#128153;</h1>
+
+  <!-- Audio elementi -->
+  <audio id="loveSong" src="Miro _ Yalvarımmı (Prod. by SarkhanBeats)(MP3_160K).mp3" preload="auto"></audio>
+
+  <button onclick="showMessage()">Kliklə və sürprizi gör</button>
+
+  <p id="secret"></p>
+
+  <script>
+    const messages = [
+  "💙 Səni sevirəm",
+  "❤️ I love you",
+  "💖 Je t’aime",
+  "💜 Ti amo",
+  "✨ Sən mənim üçün çox önəmlisən",
+  "🤝 Hər zaman yanındayam",
+  "⌛ Səninlə hər anım dəyərlidir",
+  "😊 Sənin gülüşün dünyama rəng qatır",
+  "💭 Həmişə səni düşünürəm",
+  "🌷 Sənin varlığın məni tamamlayır",
+  "💞 Qəlbim yalnız sənin üçündür",
+  "🎶 Səninlə həyat daha gözəldir",
+  "🌸 Səninlə hər anım xoşbəxtlikdir",
+  "🕊️ Səninlə həmişə sakitlik tapıram",
+  "❤️‍🩹 Sən mən də əskiksən",
+  "🔆 Həyatımın işığısan",
+  "🌙 Sən mənim ay işığımsan",
+  "☀️ Sən mənim günəşimsən",
+  "💫 Sən mənim hər şeyimsən",
+];
+
+    let index = 0;
+    let isAnimating = false;
+
+    function showMessage() {
+      if (isAnimating) return;
+      isAnimating = true;
+      const secret = document.getElementById("secret");
+
+      // Mahnını oynat
+      const song = document.getElementById("loveSong");
+      if (song.paused) {
+        song.play();
+      }
+
+      // Fade out
+      secret.style.opacity = 0;
+
+      setTimeout(() => {
+        secret.textContent = messages[index];
+        secret.style.opacity = 1;
+
+        const heart = document.createElement("div");
+        heart.className = "heart";
+
+        const hearts = ["💙", "❤️", "💜", "💚", "🧡"];
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+
+        index = (index + 1) % messages.length;
+        isAnimating = false;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

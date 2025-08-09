@@ -1,0 +1,39 @@
+/* Əsas üslublar */
+.container {
+  width: 80%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Mobil uyğunlaşdırma */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+  }
+}
+
+/* Kiçik mobil ekranlar üçün */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+}
